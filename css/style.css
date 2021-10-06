@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::selection {
+  color: #c91d1d;
+  background: gray;
+}
+
+body {
+  min-height: 100vh;
+  background: #141414;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.root .text-field {
+  width: 400px;
+  max-width: 1000px;
+  padding: 5px 5px;
+  margin: 50px 0;
+  background: transparent;
+  outline: none;
+  border: 1px solid gray;
+  color: white;
+  font-size: 1.25rem;
+  font-family: "Chakra Petch", sans-serif;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  user-select: none;
+}
+
+.keyboard > div {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+
+.keyboard .button {
+  position: relative;
+  height: 50px;
+  width: 50px;
+  background: #404040;
+  margin: 3px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  color: white;
+  font-size: 1.1rem;
+  font-family: "Chakra Petch", sans-serif;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keyboard .button:hover {
+  background: gray;
+}
+
+.keyboard .button.with-shift {
+  text-transform: uppercase;
+}
+
+.keyboard .backspace,
+.keyboard .shift,
+.keyboard .capslock,
+.keyboard .enter {
+  width: 100px;
+  height: 50px;
+}
+
+.keyboard .shift:after {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 80%;
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  background: #b81d1d;
+}
+
+.keyboard .shift.active:after {
+  background: #32cc32;
+}
+
+.keyboard .capslock:after {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 80%;
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  background: #b81d1d;
+}
+
+.keyboard .capslock.active:after {
+  background: #32cc32;
+}
+
+.keyboard .spacebar {
+  width: 250px;
+  height: 50px;
+}
+/*# sourceMappingURL=style.css.map */
