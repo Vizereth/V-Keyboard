@@ -1,6 +1,7 @@
+import textarea from "../text-area/text-area.js";
+
 class Keyboard {
   constructor() {
-    this.input = document.getElementsByClassName("text-field")[0];
     this.shift = false;
     this.caps = false;
   }
@@ -14,7 +15,7 @@ class Keyboard {
   }
 
   initLetterKeys() {
-    const keys = [...document.getElementsByClassName("letter-key")];
+    const keys = document.querySelectorAll(".letter-key");
 
     keys.forEach((key) => {
       key.addEventListener("click", () => {
@@ -24,37 +25,40 @@ class Keyboard {
           letter = letter.toUpperCase();
         }
 
-        this.input.value += letter;
+        textarea.update(letter);
       });
     });
   }
 
   initPunctuationKeys() {
-    const keys = [...document.getElementsByClassName("punctuation-key")];
+    const keys = document.querySelectorAll(".punctuation-key");
 
-    keys.forEach((key) =>
-      key.addEventListener("click", () => (this.input.value += key.textContent))
-    );
+    keys.forEach((key) => {
+      key.addEventListener("click", () => {
+        const symbol = key.textContent;
+        textarea.update(symbol);
+      });
+    });
   }
 
   initNumberKeys() {
-    const keys = [...document.getElementsByClassName("number-key")];
+    const keys = document.querySelectorAll(".number-key");
 
     keys.forEach((key) => {
-      key.addEventListener(
-        "click",
-        () => (this.input.value += key.textContent)
-      );
+      key.addEventListener("click", () => {
+        const symbol = key.textContent;
+        textarea.update(symbol);
+      });
     });
   }
 
   initFunctionalKeys() {
-    const shift = document.getElementsByClassName("shift")[0];
-    const capslock = document.getElementsByClassName("capslock")[0];
-    const backspace = document.getElementsByClassName("backspace")[0];
+    const shift = document.querySelector(".shift");
+    const capslock = document.querySelector(".capslock");
+    const backspace = document.querySelector(".backspace");
 
     shift.addEventListener("click", () => {
-      if ([...shift.classList].includes("active")) {
+      if (shift.classList.contains("active")) {
         this.shift = false;
         shift.classList.remove("active");
         this.displayNumbers();
@@ -68,7 +72,7 @@ class Keyboard {
     });
 
     capslock.addEventListener("click", () => {
-      if ([...capslock.classList].includes("active")) {
+      if (capslock.classList.contains("active")) {
         capslock.classList.remove("active");
         this.caps = false;
       } else {
@@ -79,35 +83,34 @@ class Keyboard {
       this.uppercaseLetters(shift, capslock);
     });
 
-    backspace.addEventListener(
-      "click",
-      () =>
-        (this.input.value = this.input.value.slice(
-          0,
-          this.input.value.length - 1
-        ))
-    );
+    backspace.addEventListener("click", () => textarea.erase());
   }
 
   initOtherKeys() {
-    const spacebar = document.getElementsByClassName("spacebar")[0];
-    const enter = document.getElementsByClassName("enter")[0];
+    const spacebar = document.querySelector(".spacebar");
+    const enter = document.querySelector(".enter");
 
-    spacebar.addEventListener("click", () => (this.input.value += " "));
-    enter.addEventListener("click", () => (this.input.value += "\n"));
+    const spaceSymbol = " ";
+    const enterSymbol = "\n";
+
+    spacebar.addEventListener("click", () => textarea.update(spaceSymbol));
+    enter.addEventListener("click", () => textarea.update(enterSymbol));
   }
 
   uppercaseLetters(sh, caps) {
-    const letterKeys = [...document.getElementsByClassName("letter-key")];
+    const letterKeys = document.querySelectorAll(".letter-key");
 
     const shiftCheck = (() =>
-      [...sh.classList].includes("active") ? true : false)();
+      sh.classList.contains("active") ? true : false)();
     const capsCheck = (() =>
-      [...caps.classList].includes("active") ? true : false)();
+      caps.classList.contains("active") ? true : false)();
 
     if (shiftCheck && capsCheck) return;
 
-    if ((shiftCheck || capsCheck) && ![...letterKeys[0].classList].includes("with-shift"))
+    if (
+      (shiftCheck || capsCheck) &&
+      !letterKeys[0].classList.contains("with-shift")
+    )
       return letterKeys.forEach((key) => key.classList.add("with-shift"));
 
     if (!shiftCheck && !capsCheck)
@@ -115,9 +118,9 @@ class Keyboard {
   }
 
   displaySymbols() {
-    const keys = [...document.getElementsByClassName("number-key")];
-    const dash = document.getElementsByClassName("dash")[0];
-    const plus = document.getElementsByClassName("plus")[0];
+    const keys = document.querySelectorAll(".number-key");
+    const dash = document.querySelector(".dash");
+    const plus = document.querySelector(".plus");
 
     dash.textContent = "_";
     plus.textContent = "+";
@@ -166,9 +169,9 @@ class Keyboard {
   }
 
   displayNumbers() {
-    const keys = [...document.getElementsByClassName("number-key")];
-    const dash = document.getElementsByClassName("dash")[0];
-    const plus = document.getElementsByClassName("plus")[0];
+    const keys = document.querySelectorAll(".number-key");
+    const dash = document.querySelector(".dash");
+    const plus = document.querySelector(".plus");
 
     dash.textContent = "-";
     plus.textContent = "=";
@@ -220,4 +223,3 @@ class Keyboard {
 const keyboard = new Keyboard();
 
 window.addEventListener("DOMContentLoaded", () => keyboard.initialize());
-

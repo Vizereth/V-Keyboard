@@ -1,0 +1,16 @@
+@import "vars";
+@import "fonts";
+@import "reset";
+@import "libs";
+@import "mixins";
+@import "global";
+
+@import "../components/keyboard/keyboard";
+@import "../components/text-area/text-area";
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
