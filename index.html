@@ -8,89 +8,88 @@
 	<link rel="icon" type="image/ico" href="favicon.ico" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400&display=swap" rel="stylesheet" />
-	<title>Virtual Keyboard</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<title>Keyboard</title>
 </head>
 
 <body>
-	<div class="wrapper">
-		<div class="container">
-			<div class="content-wrapper">
-				<div class="text-area">
-					<textarea type="text" class="text-area__field"></textarea>
+	<div class="container">
+		<div class="content">
+			<div class="textarea">
+				<textarea type="text" class="textarea__input"></textarea>
+			</div>
+			<div class="keyboard">
+				<div class="row row-1">
+					<div class="button number-key key-1"><span>0</span></div>
+					<div class="button number-key key-2"><span>1</span></div>
+					<div class="button number-key key-3"><span>2</span></div>
+					<div class="button number-key key-4"><span>3</span></div>
+					<div class="button number-key key-5"><span>4</span></div>
+					<div class="button number-key key-6"><span>5</span></div>
+					<div class="button number-key key-7"><span>6</span></div>
+					<div class="button number-key key-8"><span>7</span></div>
+					<div class="button number-key key-9"><span>8</span></div>
+					<div class="button number-key key-0"><span>9</span></div>
+					<div class="button punctuation-key dash"><span>-</span></div>
+					<div class="button punctuation-key plus"><span>+</span></div>
+					<div class="button backspace">
+						<span class="material-icons">backspace</span>
+					</div>
 				</div>
-				<div class="keyboard">
-					<div class="row-1">
-						<div class="button number-key key-1">1</div>
-						<div class="button number-key key-2">2</div>
-						<div class="button number-key key-3">3</div>
-						<div class="button number-key key-4">4</div>
-						<div class="button number-key key-5">5</div>
-						<div class="button number-key key-6">6</div>
-						<div class="button number-key key-7">7</div>
-						<div class="button number-key key-8">8</div>
-						<div class="button number-key key-9">9</div>
-						<div class="button number-key key-0">0</div>
-						<div class="button punctuation-key dash">-</div>
-						<div class="button punctuation-key plus">+</div>
-						<div class="button backspace">
-							<span class="material-icons">backspace</span>
-						</div>
+				<div class="row row-2">
+					<div class="button letter-key key-q"><span>q</span></div>
+					<div class="button letter-key key-w"><span>w</span></div>
+					<div class="button letter-key key-e"><span>e</span></div>
+					<div class="button letter-key key-r"><span>r</span></div>
+					<div class="button letter-key key-t"><span>t</span></div>
+					<div class="button letter-key key-y"><span>y</span></div>
+					<div class="button letter-key key-u"><span>u</span></div>
+					<div class="button letter-key key-i"><span>i</span></div>
+					<div class="button letter-key key-o"><span>o</span></div>
+					<div class="button letter-key key-p"><span>p</span></div>
+					<div class="button enter">
+						<span class="material-icons"> keyboard_return </span>
 					</div>
-					<div class="row-2">
-						<div class="button letter-key key-q">q</div>
-						<div class="button letter-key key-w">w</div>
-						<div class="button letter-key key-e">e</div>
-						<div class="button letter-key key-r">r</div>
-						<div class="button letter-key key-t">t</div>
-						<div class="button letter-key key-y">y</div>
-						<div class="button letter-key key-u">u</div>
-						<div class="button letter-key key-i">i</div>
-						<div class="button letter-key key-o">o</div>
-						<div class="button letter-key key-p">p</div>
-						<div class="button enter">
-							<span class="material-icons"> keyboard_return </span>
-						</div>
+				</div>
+				<div class="row row-3">
+					<div class="button capslock">
+						<span class="material-icons"> keyboard_capslock </span>
 					</div>
-					<div class="row-3">
-						<div class="button capslock">
-							<span class="material-icons"> keyboard_capslock </span>
-						</div>
-						<div class="button letter-key key-a">a</div>
-						<div class="button letter-key key-s">s</div>
-						<div class="button letter-key key-d">d</div>
-						<div class="button letter-key key-f">f</div>
-						<div class="button letter-key key-g">g</div>
-						<div class="button letter-key key-h">h</div>
-						<div class="button letter-key key-j">j</div>
-						<div class="button letter-key key-k">k</div>
-						<div class="button letter-key key-l">l</div>
-						<div class="button punctuation-key colon">:</div>
-						<div class="button punctuation-key semi-colon">;</div>
+					<div class="button letter-key key-a"><span>a</span></div>
+					<div class="button letter-key key-s"><span>s</span></div>
+					<div class="button letter-key key-d"><span>d</span></div>
+					<div class="button letter-key key-f"><span>f</span></div>
+					<div class="button letter-key key-g"><span>g</span></div>
+					<div class="button letter-key key-h"><span>h</span></div>
+					<div class="button letter-key key-j"><span>j</span></div>
+					<div class="button letter-key key-k"><span>k</span></div>
+					<div class="button letter-key key-l"><span>l</span></div>
+					<div class="button punctuation-key colon"><span>:</span></div>
+					<div class="button punctuation-key semi-colon">
+						<span>;</span>
 					</div>
-					<div class="row-4">
-						<div class="button shift">
-							<i class="fas fa-caret-square-up"><span class="material-icons">
-									keyboard_double_arrow_up
-								</span></i>
-						</div>
-						<div class="button letter-key key-z">z</div>
-						<div class="button letter-key key-x">x</div>
-						<div class="button letter-key key-c">c</div>
-						<div class="button letter-key key-v">v</div>
-						<div class="button letter-key key-b">b</div>
-						<div class="button letter-key key-n">n</div>
-						<div class="button letter-key key-m">m</div>
-						<div class="button punctuation-key comma">,</div>
-						<div class="button punctuation-key period">.</div>
-						<div class="button punctuation-key question-mark">?</div>
+				</div>
+				<div class="row row-4">
+					<div class="button shift">
+						<i class="fas fa-caret-square-up"><span class="material-icons">
+								keyboard_double_arrow_up
+							</span></i>
 					</div>
-					<div class="row-5">
-						<div class="button spacebar">
-							<span class="material-icons"> space_bar </span>
-						</div>
+					<div class="button letter-key key-z"><span>z</span></div>
+					<div class="button letter-key key-x"><span>x</span></div>
+					<div class="button letter-key key-c"><span>c</span></div>
+					<div class="button letter-key key-v"><span>v</span></div>
+					<div class="button letter-key key-b"><span>b</span></div>
+					<div class="button letter-key key-n"><span>n</span></div>
+					<div class="button letter-key key-m"><span>m</span></div>
+					<div class="button punctuation-key comma"><span>,</span></div>
+					<div class="button punctuation-key period"><span>.</span></div>
+					<div class="button punctuation-key question-mark"><span>?</span></div>
+				</div>
+				<div class="row row-5">
+					<div class="button spacebar">
+						<span class="material-icons"> space_bar </span>
 					</div>
 				</div>
 			</div>

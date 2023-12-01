@@ -2,17 +2,18 @@
     "use strict";
     class TextArea {
         constructor() {
-            this.el = document.querySelector(".text-area__field");
+            this.el = document.querySelector(".textarea__input");
         }
         update(userInput) {
-            this.el.value += userInput;
+            this.el.value = this.el.value.slice(0, this.el.value.length - 1);
+            this.el.value += `${userInput}_`;
         }
         erase() {
             this.el.value = this.el.value.slice(0, this.el.value.length - 1);
         }
     }
-    const text_area_textarea = new TextArea;
-    const text_area = text_area_textarea;
+    const textarea_textarea = new TextArea;
+    const components_textarea_textarea = textarea_textarea;
     class Keyboard {
         constructor() {
             this.shift = false;
@@ -28,19 +29,19 @@
         initLetterKeys() {
             const keys = document.querySelectorAll(".letter-key");
             keys.forEach((key => {
+                const symbol = key.querySelector("span").textContent;
                 key.addEventListener("click", (() => {
-                    let letter = key.textContent;
-                    if (this.shift || this.caps) letter = letter.toUpperCase();
-                    text_area.update(letter);
+                    if (this.shift || this.caps) return components_textarea_textarea.update(symbol.toUpperCase());
+                    return components_textarea_textarea.update(symbol);
                 }));
             }));
         }
         initPunctuationKeys() {
             const keys = document.querySelectorAll(".punctuation-key");
             keys.forEach((key => {
+                const symbol = key.querySelector("span").textContent;
                 key.addEventListener("click", (() => {
-                    const symbol = key.textContent;
-                    text_area.update(symbol);
+                    components_textarea_textarea.update(symbol);
                 }));
             }));
         }
@@ -48,8 +49,8 @@
             const keys = document.querySelectorAll(".number-key");
             keys.forEach((key => {
                 key.addEventListener("click", (() => {
-                    const symbol = key.textContent;
-                    text_area.update(symbol);
+                    const symbol = key.querySelector("span").textContent;
+                    components_textarea_textarea.update(symbol);
                 }));
             }));
         }
@@ -79,18 +80,18 @@
                 }
                 this.uppercaseLetters(shift, capslock);
             }));
-            backspace.addEventListener("click", (() => text_area.erase()));
+            backspace.addEventListener("click", (() => components_textarea_textarea.erase()));
         }
         initOtherKeys() {
             const spacebar = document.querySelector(".spacebar");
             const enter = document.querySelector(".enter");
             const spaceSymbol = " ";
             const enterSymbol = "\n";
-            spacebar.addEventListener("click", (() => text_area.update(spaceSymbol)));
-            enter.addEventListener("click", (() => text_area.update(enterSymbol)));
+            spacebar.addEventListener("click", (() => components_textarea_textarea.update(spaceSymbol)));
+            enter.addEventListener("click", (() => components_textarea_textarea.update(enterSymbol)));
         }
         uppercaseLetters(sh, caps) {
-            const letterKeys = document.querySelectorAll(".letter-key");
+            const letterKeys = document.querySelectorAll(".letter-key span");
             const shiftCheck = (() => sh.classList.contains("active") ? true : false)();
             const capsCheck = (() => caps.classList.contains("active") ? true : false)();
             if (shiftCheck && capsCheck) return;
@@ -98,9 +99,9 @@
             if (!shiftCheck && !capsCheck) return letterKeys.forEach((key => key.classList.remove("with-shift")));
         }
         displaySymbols() {
-            const keys = document.querySelectorAll(".number-key");
-            const dash = document.querySelector(".dash");
-            const plus = document.querySelector(".plus");
+            const keys = document.querySelectorAll(".number-key span");
+            const dash = document.querySelector(".dash span");
+            const plus = document.querySelector(".plus span");
             dash.textContent = "_";
             plus.textContent = "+";
             keys.forEach((key => {
@@ -154,9 +155,9 @@
             }));
         }
         displayNumbers() {
-            const keys = document.querySelectorAll(".number-key");
-            const dash = document.querySelector(".dash");
-            const plus = document.querySelector(".plus");
+            const keys = document.querySelectorAll(".number-key span");
+            const dash = document.querySelector(".dash span");
+            const plus = document.querySelector(".plus span");
             dash.textContent = "-";
             plus.textContent = "=";
             keys.forEach((key => {

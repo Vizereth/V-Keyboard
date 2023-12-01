@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);
+
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -47,8 +49,13 @@ input,
 button,
 textarea,
 select {
+  background: transparent;
   color: inherit;
   font-family: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 a,
@@ -62,30 +69,29 @@ a:visited {
   border: 0;
 }
 
-::-moz-selection {
-  color: #c91d1d;
-  background: gray;
-}
-
-::selection {
-  color: #c91d1d;
-  background: gray;
-}
-
 html,
 body {
-  background: #111111;
-  color: white;
-  height: 100%;
+  background: #F2F7FB;
+  color: #4d4d4d;
   overflow-x: hidden;
-  font-family: "Chakra Petch", sans-serif;
+  font-family: "Roboto", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100%;
 }
 
-button {
-  cursor: pointer;
-}
-
-.wrapper {
+.container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -99,27 +105,13 @@ button {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  min-height: 100%;
-}
-
-.main {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
-}
-
-.footer {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-}
-
-.container {
-  margin: 0 auto;
   padding: 0 15px;
 }
 
-.keyboard {
+.content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -130,14 +122,29 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 50px;
+  padding: 100px 0;
+}
+
+.keyboard {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  padding: 25px;
+  background: -o-linear-gradient(305deg, #F2F7FB, #E9F2FB);
+  background: linear-gradient(145deg, #F2F7FB, #E9F2FB);
+  -webkit-box-shadow: 8px 8px 15px #D9E3EC;
+          box-shadow: 8px 8px 15px #D9E3EC;
+  border-radius: 12px;
+  min-width: 750px;
+  max-width: 1000px;
 }
 
-.keyboard > div {
+.keyboard .row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -145,34 +152,39 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-line-pack: center;
-      align-content: center;
-}
-
-.keyboard .button {
-  position: relative;
-  height: 50px;
-  width: 50px;
-  background: #404040;
-  margin: 3px;
-  border: none;
-  border-radius: 4px;
-  outline: none;
-  font-size: 1.1rem;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
 
-.keyboard .button:hover {
-  background: gray;
+.keyboard .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  background: -o-linear-gradient(305deg, #F2F7FB, #E9F2FB);
+  background: linear-gradient(145deg, #F2F7FB, #E9F2FB);
+  -webkit-box-shadow: 5px 5px 15px #D9E3EC;
+          box-shadow: 5px 5px 15px #D9E3EC;
+}
+
+.keyboard .button span {
+  background: #da22ff;
+  background: -webkit-gradient(linear, left bottom, left top, from(#9733ee), to(#da22ff));
+  background: -o-linear-gradient(bottom, #9733ee, #da22ff);
+  background: linear-gradient(to top, #9733ee, #da22ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .keyboard .button.with-shift {
@@ -183,77 +195,61 @@ button {
 .keyboard .shift,
 .keyboard .capslock,
 .keyboard .enter {
-  width: 100px;
+  width: 87.5px;
   height: 50px;
-}
-
-.keyboard .shift:after {
-  content: "";
-  position: absolute;
-  top: 15%;
-  left: 80%;
-  width: 10px;
-  height: 10px;
-  border: none;
-  border-radius: 50%;
-  background: #b81d1d;
-}
-
-.keyboard .shift.active:after {
-  background: #32cc32;
-}
-
-.keyboard .capslock:after {
-  content: "";
-  position: absolute;
-  top: 15%;
-  left: 80%;
-  width: 10px;
-  height: 10px;
-  border: none;
-  border-radius: 50%;
-  background: #b81d1d;
-}
-
-.keyboard .capslock.active:after {
-  background: #32cc32;
 }
 
 .keyboard .spacebar {
-  width: 250px;
+  width: 100%;
+  max-width: 400px;
   height: 50px;
 }
 
-.text-area {
+.keyboard .shift,
+.keyboard .capslock {
+  position: relative;
+}
+
+.keyboard .shift.active:after,
+.keyboard .capslock.active:after {
+  background: #3be6ad;
+}
+
+.keyboard .shift.active:after,
+.keyboard .capslock.active:after {
+  background: #3be6ad;
+}
+
+.keyboard .shift:after,
+.keyboard .capslock:after {
+  content: "";
+  position: absolute;
+  top: 20%;
+  right: 20%;
+  width: 6px;
+  height: 6px;
+  border: none;
+  border-radius: 50%;
+  background: #ff6c6c;
+}
+
+.textarea {
   width: 100%;
   padding: 0 100px;
 }
 
-.text-area__field {
-  background: transparent;
+.textarea__input {
+  overflow: auto;
   width: 100%;
-  max-width: 1500px;
-  min-height: 100px;
-  padding: 5px;
-  margin: 50px 0;
+  min-height: 150px;
+  max-height: 100%;
+  resize: vertical;
+  background: -o-linear-gradient(305deg, #F2F7FB, #E9F2FB);
+  background: linear-gradient(145deg, #F2F7FB, #E9F2FB);
+  -webkit-box-shadow: inset 2px 2px 15px #D9E3EC;
+          box-shadow: inset 2px 2px 15px #D9E3EC;
+  border-radius: 12px;
+  border: none;
+  padding: 20px;
   outline: none;
-  border: 1px solid gray;
-  font-size: 1rem;
-  font-family: "Chakra Petch", sans-serif;
-}
-
-.content-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
