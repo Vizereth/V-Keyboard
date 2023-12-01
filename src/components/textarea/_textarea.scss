@@ -1,0 +1,20 @@
+.textarea {
+  width: 100%;
+  padding: 0 100px;
+
+  &__input {
+    overflow: auto;
+    width: 100%;
+    min-height: 150px;
+    max-height: 100%;
+    resize: vertical;
+
+    background: linear-gradient(145deg, $primary-color, $key-corner);
+    box-shadow: inset 2px  2px 15px $shadow-color;
+
+    border-radius: 12px;
+    border: none;
+    padding: 20px;
+    outline: none;
+  }
+}

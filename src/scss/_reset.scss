@@ -45,8 +45,13 @@ input,
 button,
 textarea,
 select {
+  background: transparent;
   color: inherit;
   font-family: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 a,

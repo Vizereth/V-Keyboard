@@ -1,40 +1,47 @@
 .keyboard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  width: 100%;
-
   user-select: none;
+  padding: 25px;
+  background: linear-gradient(145deg, $primary-color, $key-corner);
+  box-shadow: 8px 8px 15px $shadow-color;
+  border-radius: 12px;
+  min-width: 750px;
+  max-width: 1000px;
 
-  > div {
+  .row {
     display: flex;
     flex-direction: row;
-    align-content: center;
+    justify-content: center;
   }
 
   .button {
-    position: relative;
-    height: $button-size;
-    width: $button-size;
-
-    background: getKeyboardBG(normal);
-
-    margin: 3px;
-
-    border: none;
-    border-radius: 4px;
-    outline: none;
-
-    font-size: 1.1rem;
-
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    width: $btn-size;
+    height: $btn-size;
+    border-radius: 15px;
+    background: linear-gradient(145deg, $primary-color, $key-corner);
+    box-shadow: 5px 5px 15px $shadow-color;
+
+    span {
+      background: #da22ff; 
+      background: -webkit-linear-gradient(
+        to top,
+        #9733ee,
+        #da22ff
+      ); 
+      background: linear-gradient(
+        to top,
+        #9733ee,
+        #da22ff
+      ); 
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
     &:hover {
-      background: getKeyboardBG(light);
     }
   }
 
@@ -46,48 +53,38 @@
   .shift,
   .capslock,
   .enter {
-    width: $big-button-width;
-    height: $button-size;
-  }
-
-  .shift:after {
-    content: "";
-    position: absolute;
-    top: 15%;
-    left: 80%;
-    width: map-get($indicator, size);
-    height: map-get($indicator, size);
-
-    border: none;
-    border-radius: 50%;
-
-    background: map-get($indicator, inactiveColor);
-  }
-
-  .shift.active:after {
-    background: map-get($indicator, activeColor);
-  }
-
-  .capslock:after {
-    content: "";
-    position: absolute;
-    top: 15%;
-    left: 80%;
-    width: map-get($indicator, size);
-    height: map-get($indicator, size);
-
-    border: none;
-    border-radius: 50%;
-
-    background: map-get($indicator, inactiveColor);
-  }
-
-  .capslock.active:after {
-    background: map-get($indicator, activeColor);
+    width: $btn-size * 1.75;
+    height: $btn-size;
   }
 
   .spacebar {
-    width: $spacebar-width;
-    height: $button-size;
+    width: 100%;
+    max-width: $btn-size * 8;
+    height: $btn-size;
+  }
+
+  .shift,
+  .capslock {
+    position: relative;
+
+    &.active:after {
+      background: map-get($indicator, activeColor);
+    }
+
+    &.active:after {
+      background: map-get($indicator, activeColor);
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 20%;
+      right: 20%;
+      width: map-get($indicator, size);
+      height: map-get($indicator, size);
+      border: none;
+      border-radius: 50%;
+      background: map-get($indicator, inactiveColor);
+    }
   }
 }

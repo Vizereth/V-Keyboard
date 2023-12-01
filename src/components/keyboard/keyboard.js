@@ -1,4 +1,4 @@
-import textarea from "../text-area/text-area.js";
+import textarea from "../textarea/textarea.js";
 
 class Keyboard {
   constructor() {
@@ -18,14 +18,14 @@ class Keyboard {
     const keys = document.querySelectorAll(".letter-key");
 
     keys.forEach((key) => {
-      key.addEventListener("click", () => {
-        let letter = key.textContent;
+      const symbol = key.querySelector("span").textContent;
 
+      key.addEventListener("click", () => {
         if (this.shift || this.caps) {
-          letter = letter.toUpperCase();
+          return textarea.update(symbol.toUpperCase());
         }
 
-        textarea.update(letter);
+        return textarea.update(symbol);
       });
     });
   }
@@ -34,8 +34,9 @@ class Keyboard {
     const keys = document.querySelectorAll(".punctuation-key");
 
     keys.forEach((key) => {
+      const symbol = key.querySelector("span").textContent;
+
       key.addEventListener("click", () => {
-        const symbol = key.textContent;
         textarea.update(symbol);
       });
     });
@@ -46,7 +47,7 @@ class Keyboard {
 
     keys.forEach((key) => {
       key.addEventListener("click", () => {
-        const symbol = key.textContent;
+        const symbol = key.querySelector("span").textContent;
         textarea.update(symbol);
       });
     });
@@ -98,7 +99,7 @@ class Keyboard {
   }
 
   uppercaseLetters(sh, caps) {
-    const letterKeys = document.querySelectorAll(".letter-key");
+    const letterKeys = document.querySelectorAll(".letter-key span");
 
     const shiftCheck = (() =>
       sh.classList.contains("active") ? true : false)();
@@ -118,9 +119,9 @@ class Keyboard {
   }
 
   displaySymbols() {
-    const keys = document.querySelectorAll(".number-key");
-    const dash = document.querySelector(".dash");
-    const plus = document.querySelector(".plus");
+    const keys = document.querySelectorAll(".number-key span");
+    const dash = document.querySelector(".dash span");
+    const plus = document.querySelector(".plus span");
 
     dash.textContent = "_";
     plus.textContent = "+";
@@ -169,9 +170,9 @@ class Keyboard {
   }
 
   displayNumbers() {
-    const keys = document.querySelectorAll(".number-key");
-    const dash = document.querySelector(".dash");
-    const plus = document.querySelector(".plus");
+    const keys = document.querySelectorAll(".number-key span");
+    const dash = document.querySelector(".dash span");
+    const plus = document.querySelector(".plus span");
 
     dash.textContent = "-";
     plus.textContent = "=";
