@@ -1,4 +1,4 @@
-### Javascript Virtual Keyboard
+# Javascript Virtual Keyboard
 
 ## Deploy
 
