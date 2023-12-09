@@ -24,6 +24,11 @@
     border-radius: 15px;
     background: linear-gradient(145deg, $primary-color, $key-corner);
     box-shadow: 5px 5px 15px $shadow-color;
+    transition: all 100ms ease-in;
+    
+    &:hover, &:focus {
+      box-shadow: 5px 5px 15px $shadow-color inset;
+    }
 
     span {
       background: #da22ff; 
@@ -41,12 +46,9 @@
       -webkit-text-fill-color: transparent;
     }
 
-    &:hover {
+    span.with-shift {
+      text-transform: uppercase;
     }
-  }
-
-  .button.with-shift {
-    text-transform: uppercase;
   }
 
   .backspace,

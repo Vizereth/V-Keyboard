@@ -4,8 +4,7 @@ class TextArea {
   }
 
   update(userInput) {
-    this.el.value = this.el.value.slice(0, this.el.value.length - 1);
-    this.el.value += `${userInput}_`;
+    this.el.value += `${userInput}`;
   }
 
   erase() {
