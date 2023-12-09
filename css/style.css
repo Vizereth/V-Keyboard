@@ -176,6 +176,15 @@ body {
   background: linear-gradient(145deg, #F2F7FB, #E9F2FB);
   -webkit-box-shadow: 5px 5px 15px #D9E3EC;
           box-shadow: 5px 5px 15px #D9E3EC;
+  -webkit-transition: all 100ms ease-in;
+  -o-transition: all 100ms ease-in;
+  transition: all 100ms ease-in;
+}
+
+.keyboard .button:hover,
+.keyboard .button:focus {
+  -webkit-box-shadow: 5px 5px 15px #D9E3EC inset;
+          box-shadow: 5px 5px 15px #D9E3EC inset;
 }
 
 .keyboard .button span {
@@ -187,7 +196,7 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-.keyboard .button.with-shift {
+.keyboard .button span.with-shift {
   text-transform: uppercase;
 }
 
