@@ -2,7 +2,7 @@
 
 ## Deploy
 
-https://sophrona.github.io/V-Keyboard
+https://vizereth.github.io/V-Keyboard
 
 ## Project setup
 ```
